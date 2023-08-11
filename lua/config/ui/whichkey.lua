@@ -82,14 +82,8 @@ local mappings = {
   n = {":NvimTreeToggle<cr>", "NvimTree explorer"},
   Z = {":ZenMode<cr>", "ZenMode"},
   Q = {":quitall<cr>", "Rage quit"},
-  S = {
-    name = "Session manager",
-    s = {":SessionManager save_current_session<cr>", "Save current session"},
-    l = {":SessionManager load_session<cr>", "Load session"},
-    d = {":SessionManager delete_session<cr>", "Delete session"}
-  },
   f = {
-    name = "Telescope",
+    name = "Find",
     f = {":Telescope find_files<cr>", "Find file"},
     w = {":Telescope live_grep<cr>", "Find word"},
     c = {":Telescope colorscheme<cr>", "colorscheme selector"},
@@ -98,13 +92,12 @@ local mappings = {
     b = {":Telescope file_browser<cr>", "Search in directory"},
     e = { ":NoiceTelescope<cr>","Error history" }
   },
-  p ={
-    name = "Packer",
-    u = {":PackerUpdate<cr>", "PackerUpdate"},
-    s = {":PackerSync<cr>", "PackerSync"},
-    S = {":PackerStatus<cr>", "PackerStatus"},
-    c = {":PackerClean<cr>", "PackerClean"},
-    C = {":PackerCompile<cr>", "PackerCompile"}
+  L ={
+    name = "Lazy",
+    u = {":Lazy update<cr>", "Lazy update"},
+    s = {":Lazy sync<cr>", "Lazy sync"},
+    p = {":Lazy profile<cr>", "Lazy profile"},
+    c = {":Lazy clean<cr>", "Lazy clean"},
   },
   t = {
     name = "Terminal",

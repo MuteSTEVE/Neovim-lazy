@@ -19,6 +19,12 @@ local plugins = {
   -- Colorscheme
   {
     'navarasu/onedark.nvim',
+    event = {
+      "VimEnter",
+      "GUIEnter",
+      "BufReadPost",
+      "BufNewFile",
+    },
     config = function()
       require('config.colorscheme.onedark')
     end
@@ -28,25 +34,54 @@ local plugins = {
   {
     {
       'kkharji/lspsaga.nvim',
+      event = {
+        "VeryLazy",
+        "BufReadPost",
+        "BufNewFile",
+      },
       config = function()
         require('config.lsp.lspsaga')
       end
     },
     {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      config = function()
-        require('config.lsp.mason')
-      end
+      {
+        'williamboman/mason.nvim',
+        event = {
+          "VeryLazy",
+          "BufReadPost",
+          "BufNewFile",
+        },
+        dependencies = {
+          'williamboman/mason-lspconfig.nvim',
+        },
+        event = {
+          "VeryLazy",
+          "BufReadPost",
+          "BufNewFile",
+        },
+        config = function()
+          require('config.lsp.mason')
+        end
+      },
     },
     {
       'neovim/nvim-lspconfig',
+      event = {
+        "VeryLazy",
+        "BufReadPost",
+        "BufNewFile",
+      },
       config = function()
         require('config.lsp.lspconfig')
       end
     },
     {
       'jose-elias-alvarez/null-ls.nvim',
+      event = {
+        "VeryLazy",
+        "BufReadPost",
+        "BufNewFile",
+      },
       config = function()
         require('config.lsp.nulls')
       end
@@ -64,18 +99,44 @@ local plugins = {
     'hrsh7th/cmp-cmdline',
     'rafamadriz/friendly-snippets',
     'onsails/lspkind.nvim',
+    event = {
+      "VeryLazy",
+      "InsertEnter",
+      "BufReadPost",
+      "BufNewFile",
+    },
     {
       'ults-io/vscode-react-javascript-snippets',
       build = 'yarn install --frozen-lockfile && yarn compile',
+      event = {
+        "VeryLazy",
+        "InsertEnter",
+        "BufReadPost",
+        "BufNewFile",
+      },
     },
     {
       'hrsh7th/nvim-cmp',
+      dependencies = {
+      },
+      event = {
+        "VeryLazy",
+        "InsertEnter",
+        "BufReadPost",
+        "BufNewFile",
+      },
       config = function()
         require('config.snip.cmp')
       end
     },
     {
       'windwp/nvim-autopairs',
+      event = {
+        "VeryLazy",
+        "InsertEnter",
+        "BufReadPost",
+        "BufNewFile",
+      },
       config = function()
         require('config.snip.autopairs')
       end
@@ -84,11 +145,28 @@ local plugins = {
 
   -- treesitter, ts-autotag, ts-rainbow2
   {
-    'HiPhish/nvim-ts-rainbow2',
     'windwp/nvim-ts-autotag',
     'nvim-treesitter/nvim-treesitter-context',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
+    {
+      'HiPhish/nvim-ts-rainbow2',
+      event = {
+        "VeryLazy",
+        "BufReadPost",
+        "BufNewFile",
+      },
+    },
     {
       'nvim-treesitter/nvim-treesitter',
+      event = {
+        "VeryLazy",
+        "BufReadPost",
+        "BufNewFile",
+      },
       build = ':TSUpdate',
       config = function()
         require('config.treesitter')
@@ -99,6 +177,11 @@ local plugins = {
   -- Lualine
   {
     'nvim-lualine/lualine.nvim',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
     config = function()
       require('config.ui.lualine')
     end
@@ -107,6 +190,11 @@ local plugins = {
   -- barbecue, navic
   {
     'utilyre/barbecue.nvim',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
     dependencies = {
       'SmiteshP/nvim-navic',
     },
@@ -122,6 +210,11 @@ local plugins = {
       'MunifTanjim/nui.nvim',
       'rcarriga/nvim-notify',
     },
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
     config = function()
       require('config.ui.noice')
     end
@@ -130,6 +223,11 @@ local plugins = {
   -- nvim-tree, web-devicons
   {
     'nvim-tree/nvim-tree.lua',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
     dependencies = {
       'kyazdani42/nvim-web-devicons',
     },
@@ -141,6 +239,11 @@ local plugins = {
   -- bufferline
   {
     'akinsho/bufferline.nvim',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
     config = function()
       require('config.ui.bufferline')
     end
@@ -149,8 +252,18 @@ local plugins = {
   -- telescope
   {
     'nvim-telescope/telescope-file-browser.nvim',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
     {
       'nvim-telescope/telescope.nvim',
+      event = {
+        "VeryLazy",
+        "BufReadPost",
+        "BufNewFile",
+      },
       dependencies = {
         'nvim-lua/plenary.nvim',
       },
@@ -163,19 +276,30 @@ local plugins = {
   -- colorizer
   {
     'norcalli/nvim-colorizer.lua',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
+    ft = {
+      "css",
+      "html",
+      "php",
+      "js",
+    },
     config = function()
-      local status_ok, colorizer = pcall(require, 'colorizer')
-      if not status_ok then
-        return
-      end
-
-      colorizer.setup()
+      require('config.colorizer')
     end
   },
 
   -- gitsigns
   {
     'lewis6991/gitsigns.nvim',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
     config = function()
       require('config.ui.gitsigns')
     end
@@ -184,6 +308,11 @@ local plugins = {
   -- indentline
   {
     'lukas-reineke/indent-blankline.nvim',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
     config = function()
       require('config.ui.indentline')
     end
@@ -191,6 +320,11 @@ local plugins = {
 
   {
     'akinsho/toggleterm.nvim',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
     config = function()
       require('config.ui.toggleterm')
     end
@@ -198,6 +332,11 @@ local plugins = {
 
   {
     'terrortylor/nvim-comment',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
     config = function()
       require('config.comment')
     end
@@ -205,6 +344,11 @@ local plugins = {
 
   {
     'folke/which-key.nvim',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
     config = function()
       require('config.ui.whichkey')
     end
@@ -214,6 +358,11 @@ local plugins = {
   {
     {
       'folke/zen-mode.nvim',
+      event = {
+        "VeryLazy",
+        "BufReadPost",
+        "BufNewFile",
+      },
       config = function()
         require('config.ui.zenmode')
       end
@@ -221,6 +370,11 @@ local plugins = {
 
     {
       'folke/twilight.nvim',
+      event = {
+        "VeryLazy",
+        "BufReadPost",
+        "BufNewFile",
+      },
       config = function()
         require('config.ui.twilight')
       end
@@ -229,6 +383,11 @@ local plugins = {
 
   {
     'yamatsum/nvim-cursorline',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
     config = function()
       require('config.cursorline')
     end
@@ -237,7 +396,7 @@ local plugins = {
   {
     'BlakeJC94/alpha-nvim-fortune',
     {
-      'goolord/alpha-nvim', branch = 'feature/startify-fortune',
+      'goolord/alpha-nvim',
       config = function()
         require('config.ui.alpha')
       end
@@ -246,13 +405,13 @@ local plugins = {
 
   {
     'ggandor/leap.nvim',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
     config = function()
-      local status_ok, leap = pcall(require, 'leap')
-      if not status_ok then
-        return
-      end
-
-      leap.add_default_mappings()
+      require('config.leap')
     end
   }
 
