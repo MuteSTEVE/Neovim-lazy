@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
 local opts = {}
+
 local plugins = {
 
   -- Colorscheme
@@ -46,14 +47,6 @@ local plugins = {
     {
       {
         'williamboman/mason.nvim',
-        event = {
-          "VeryLazy",
-          "BufReadPost",
-          "BufNewFile",
-        },
-        dependencies = {
-          'williamboman/mason-lspconfig.nvim',
-        },
         event = {
           "VeryLazy",
           "BufReadPost",
@@ -187,22 +180,6 @@ local plugins = {
     end
   },
 
-  -- barbecue, navic
-  {
-    'utilyre/barbecue.nvim',
-    event = {
-      "VeryLazy",
-      "BufReadPost",
-      "BufNewFile",
-    },
-    dependencies = {
-      'SmiteshP/nvim-navic',
-    },
-    config = function()
-      require('config.ui.barbecue')
-    end
-  },
-
   -- noice, nui, notify
   {
     'folke/noice.nvim',
@@ -217,35 +194,6 @@ local plugins = {
     },
     config = function()
       require('config.ui.noice')
-    end
-  },
-
-  -- nvim-tree, web-devicons
-  {
-    'nvim-tree/nvim-tree.lua',
-    event = {
-      "VeryLazy",
-      "BufReadPost",
-      "BufNewFile",
-    },
-    dependencies = {
-      'kyazdani42/nvim-web-devicons',
-    },
-    config = function()
-      require('config.ui.nvimtree')
-    end
-  },
-
-  -- bufferline
-  {
-    'akinsho/bufferline.nvim',
-    event = {
-      "VeryLazy",
-      "BufReadPost",
-      "BufNewFile",
-    },
-    config = function()
-      require('config.ui.bufferline')
     end
   },
 
@@ -354,33 +302,6 @@ local plugins = {
     end
   },
 
-  -- ZenMode, twilight
-  {
-    {
-      'folke/zen-mode.nvim',
-      event = {
-        "VeryLazy",
-        "BufReadPost",
-        "BufNewFile",
-      },
-      config = function()
-        require('config.ui.zenmode')
-      end
-    },
-
-    {
-      'folke/twilight.nvim',
-      event = {
-        "VeryLazy",
-        "BufReadPost",
-        "BufNewFile",
-      },
-      config = function()
-        require('config.ui.twilight')
-      end
-    }
-  },
-
   {
     'yamatsum/nvim-cursorline',
     event = {
@@ -390,28 +311,6 @@ local plugins = {
     },
     config = function()
       require('config.cursorline')
-    end
-  },
-
-  {
-    'BlakeJC94/alpha-nvim-fortune',
-    {
-      'goolord/alpha-nvim',
-      config = function()
-        require('config.ui.alpha')
-      end
-    }
-  },
-
-  {
-    'ggandor/leap.nvim',
-    event = {
-      "VeryLazy",
-      "BufReadPost",
-      "BufNewFile",
-    },
-    config = function()
-      require('config.leap')
     end
   },
 
@@ -427,7 +326,23 @@ local plugins = {
       { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
       { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
     },
-  }
+  },
+
+  -- nvim-tree, web-devicons
+  {
+    'nvim-tree/nvim-tree.lua',
+    event = {
+      "VeryLazy",
+      "BufReadPost",
+      "BufNewFile",
+    },
+    dependencies = {
+      'kyazdani42/nvim-web-devicons',
+    },
+    config = function()
+      require('config.ui.nvimtree')
+    end
+  },
 
 }
 

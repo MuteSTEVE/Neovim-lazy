@@ -69,19 +69,19 @@ local setup = {
   },
 }
 local mappings = {
+  n = {":NvimTreeToggle<cr>", "NvimTree explorer"},
+  r = { '<cmd>Lspsaga rename<cr>', "Rename declaration" },
   b = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
   },
   m = { ":ToggleTermNcmpcpp<cr>", "Music Player"},
-  A = { "<cmd>Alpha<cr>", "Alpha" },
   w = {":w<cr>", "Save"},
   h = {":nohlsearch<cr>", "Remove search"},
   s = {":so %<cr>", "Source the config"},
+  q = {":q<cr>", "Quit"},
   x = {":bd<cr>", "Close buffer"},
-  n = {":NvimTreeToggle<cr>", "NvimTree explorer"},
-  Z = {":ZenMode<cr>", "ZenMode"},
-  Q = {":quitall<cr>", "Rage quit"},
+  Q = {":quitall<cr>", "Force quit"},
   f = {
     name = "Find",
     f = {":Telescope find_files<cr>", "Find file"},
@@ -121,7 +121,6 @@ local mappings = {
     d = { '<cmd>lua vim.lsp.buf.definition()<cr>', "Go To Definition" },
     D = { '<cmd>lua vim.lsp.buf.declaration()<cr>', "Go To Declaration" },
     r = { '<cmd>lua vim.lsp.buf.references()<cr>', "References" },
-    R = { '<cmd>Lspsaga rename<cr>', "Rename" },
     a = { '<cmd>Lspsaga code_action<cr>', "Code Action" },
     e = { '<cmd>Lspsaga show_line_diagnostics<cr>', "Show Line Diagnostics" },
     n = { '<cmd>Lspsaga diagnostic_jump_next<cr>', "Go To Next Diagnostic" },

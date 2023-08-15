@@ -46,8 +46,26 @@ lualine.setup {
     transparent = true,
   },
   sections = {
-    lualine_a = {'filename',},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_a = {
+      {
+        'buffers',
+        show_filename_only = true,   -- Shows shortened relative path when set to false.
+        hide_filename_extension = false,   -- Hide filename extension when set to true.
+        show_modified_status = true, -- Shows indicator when the buffer is modified.
+        mode = 0, -- 0: Shows buffer name
+        max_length = vim.o.columns * 2 / 3, -- Maximum width of buffers component,
+        symbols = {
+          modified = ' ●',      -- Text to show when the buffer is modified
+          alternate_file = '', -- Text to show to identify the alternate file
+          directory =  '',     -- Text to show when the buffer is a directory
+        },
+      },
+    },
+    lualine_b = {
+      'branch',
+      'diff',
+      'diagnostics',
+    },
     lualine_c = {},
     lualine_x = {{
         noice.api.status.search.get,
@@ -56,10 +74,9 @@ lualine.setup {
       },
       'encoding',
       'fileformat',
-      'filetype',
     },
     lualine_y = {'progress'},
-    lualine_z = {'location', progress_bar}
+    lualine_z = {progress_bar}
   },
   inactive_sections = {
     lualine_a = {},

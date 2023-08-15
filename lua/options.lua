@@ -35,7 +35,6 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.opt.termguicolors = true
 vim.o.conceallevel = 0
-vim.o.showtabline = 2
 vim.o.showmode = false
 vim.o.backup = false
 vim.o.writebackup = false

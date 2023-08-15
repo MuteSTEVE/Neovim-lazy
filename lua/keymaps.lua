@@ -16,13 +16,6 @@ map('n', 'J', ":move .+1<CR>==", { noremap = true, silent = true })
 map('v', 'K', ":move '<-2<CR>gv-gv", { noremap = true, silent = true })
 map('v', 'J', ":move '>+1<CR>gv-gv", { noremap = true, silent = true })
 
--- Add buffer (archived)
--- map('n', '<C-a>', ':b<space>', { noremap = true, silent = true })
--- map('n', '<C-x>', ':bd<CR>', { noremap = true, silent = true })
--- map('n', 'b<', ':bp<CR>', { noremap = true, silent = true })
--- map('n', 'b>', ':bn<CR>', { noremap = true, silent = true })
--- map('n', '<C-s>', ':ls<CR>:b<space>', { noremap = true, silent = true })
-
 -- Move between panes quickly
 map('n', '<C-h>', '<C-w>h', {noremap = true, silent = false})
 map('n', '<C-l>', '<C-w>l', {noremap = true, silent = false})
@@ -47,13 +40,6 @@ mapset("n", "<C-u>", "<C-d>zz")
 mapset("n", "n", "nzzzv")
 mapset("n", "N", "Nzzzv")
 
--- greates remap ever
-mapset("x", "<Leader>p", "\"_dp")
-
--- sources
--- mapset("n", "<leader><leader>", function()
---     vim.cmd("so")
--- end)
-
-mapset("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gc<Left><Left><Left>]])
-mapset("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+map('n', 'Z', ':bp<CR>', { noremap = true, silent = true})
+map('n', 'C', ':bn<CR>', { noremap = true, silent = true})
+map('n', 'X', ':bd<CR>', { noremap = true, silent = true})
